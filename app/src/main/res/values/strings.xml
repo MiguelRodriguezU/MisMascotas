@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MisMascotas</string>
+    <string name="actionbar_titulo">Mis Mascotas</string>
+    <string name="menu_opcion1">Opción 1</string>
+</resources>
