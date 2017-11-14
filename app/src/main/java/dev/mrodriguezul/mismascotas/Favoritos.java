@@ -44,6 +44,7 @@ public class Favoritos extends AppCompatActivity {
     private ArrayList<MascotaItem> obtenerMascotasFavoritas(){
         ArrayList<MascotaItem> mascotas = new ArrayList<MascotaItem>();
         mascotas.add(new MascotaItem("Mascota 1",R.drawable.ic_pet_1,4));
+        mascotas.add(new MascotaItem("Mascota 3",R.drawable.ic_pet_3,10));
         mascotas.add(new MascotaItem("Mascota 5",R.drawable.ic_pet_5,5));
         mascotas.add(new MascotaItem("Mascota 8",R.drawable.ic_pet_8,10));
         mascotas.add(new MascotaItem("Mascota 10",R.drawable.ic_pet_10,1));
