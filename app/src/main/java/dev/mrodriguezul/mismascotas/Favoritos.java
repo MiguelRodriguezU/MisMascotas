@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 
 import java.util.ArrayList;
 
@@ -50,5 +51,12 @@ public class Favoritos extends AppCompatActivity {
         mascotas.add(new MascotaItem("Mascota 10",R.drawable.ic_pet_10,1));
 
         return mascotas;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_favoritos, menu);
+        return true;
     }
 }
