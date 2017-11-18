@@ -26,6 +26,7 @@ public class Favoritos extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //getSupportActionBar().
+        //Hello World desde la nueva branch
 
         rvMascotasFavoritas = (RecyclerView) findViewById(R.id.rvMascotasFavoritas);
 
