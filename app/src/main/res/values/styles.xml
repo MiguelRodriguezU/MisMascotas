@@ -16,4 +16,16 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="btn_theme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorButtonNormal">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorBlanco</item>
+        <item name="android:textColor">@color/colorBlanco</item>
+    </style>
+
+    <style name="stl_titulo">
+        <item name="android:textSize">@dimen/titulo_height</item>
+        <item name="android:layout_margin">@dimen/titulo_margin</item>
+    </style>
+
 </resources>

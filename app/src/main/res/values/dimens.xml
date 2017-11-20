@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="layout_margin">16dp</dimen>
     <dimen name="actionbar_elevation">4dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="recycler_padding">16dp</dimen>
@@ -7,4 +8,6 @@
     <dimen name="recycler_corner_radius">4dp</dimen>
     <dimen name="recycler_margin_nombre">10dp</dimen>
     <dimen name="recycler_margin_puntuacion">10dp</dimen>
+    <dimen name="titulo_height">40dp</dimen>
+    <dimen name="titulo_margin">10dp</dimen>
 </resources>

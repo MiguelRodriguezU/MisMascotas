@@ -72,12 +72,13 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_menu_op1) {
-            return true;
+
+        if(id == R.id.menu_favoritos){
+            verFavoritos();
         }
 
-        if(id == R.id.menu_favorito_ver){
-            verFavoritos();
+        if(id == R.id.menu_contacto){
+            verContacto();
         }
 
         return super.onOptionsItemSelected(item);
@@ -85,6 +86,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void verFavoritos(){
         Intent intent = new Intent(this,Favoritos.class);
+        startActivity(intent);
+    }
+
+    private void verContacto(){
+        Intent intent = new Intent(this,Contacto.class);
         startActivity(intent);
     }
 }

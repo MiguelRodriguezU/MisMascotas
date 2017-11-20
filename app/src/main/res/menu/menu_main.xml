@@ -2,17 +2,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="dev.mrodriguezul.premascota.MainActivity">
-    <item
-        android:id="@+id/action_menu_op1"
-        android:orderInCategory="100"
-        android:title="@string/menu_opcion1"
-        app:showAsAction="never" />
 
-    <item android:id="@+id/menu_favorito_ver"
+    <item android:id="@+id/menu_favoritos"
+        android:orderInCategory="100"
         android:icon="@drawable/icons8_hotel"
-        android:title="Favoritos"
+        android:title="@string/menu_favoritos"
         app:showAsAction="ifRoom"
-        android:titleCondensed="Editar"
+        android:titleCondensed="@string/menu_favoritos"
         android:visible="true">
     </item>
+    <item
+        android:id="@+id/menu_contacto"
+        android:orderInCategory="101"
+        android:title="@string/menu_contacto"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_acerca_de"
+        android:orderInCategory="102"
+        android:title="@string/menu_aceraca_de"
+        app:showAsAction="never" />
+
 </menu>
