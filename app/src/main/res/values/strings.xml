@@ -23,4 +23,7 @@
     <string name="tv_about_nombre">Miguel Rodríguez</string>
     <string name="tv_about_descripcion">Hola, soy ingeniero de sistemas y me encanta desarrollar aplicaciones móviles</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
