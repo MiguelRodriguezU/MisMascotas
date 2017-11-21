@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import dev.mrodriguezul.mismascotas.beans.SendMail;
+
 public class Contacto extends AppCompatActivity {
     private EditText etNombre;
     private EditText etEmail;
@@ -28,6 +30,7 @@ public class Contacto extends AppCompatActivity {
         etNombre = (EditText)findViewById(R.id.et_contacto_nombre);
         etEmail = (EditText)findViewById(R.id.et_contacto_email);
         etMensaje = (EditText)findViewById(R.id.et_contacto_mensaje);
+        btnEnviar = (Button)findViewById(R.id.btn_contacto_enviar);
 
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,9 +38,6 @@ public class Contacto extends AppCompatActivity {
                 enviarMensaje();
             }
         });
-
-
-
     }
 
     private void enviarMensaje(){
@@ -46,11 +46,11 @@ public class Contacto extends AppCompatActivity {
         String mensaje = etMensaje.getText().toString();
 
         if(!nombre.equals("") && !email.equals("") && !mensaje.equals("")){
-
+            SendMail sm = new SendMail(this, email, nombre, mensaje);
+            sm.execute();
         }else{
-            Toast.makeText(getBaseContext(),"Los datos no puedes ser vacíos",Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(),getBaseContext().getResources().getString(R.string.mail_no_vacios),Toast.LENGTH_LONG).show();
         }
-
-
     }
+
 }
