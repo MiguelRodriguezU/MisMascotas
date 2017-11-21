@@ -81,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
             verContacto();
         }
 
+        if(id == R.id.menu_acerca_de){
+            verAcercaDe();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -91,6 +95,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void verContacto(){
         Intent intent = new Intent(this,Contacto.class);
+        startActivity(intent);
+    }
+
+    private void verAcercaDe(){
+        Intent intent = new Intent(this,AcercaDe.class);
         startActivity(intent);
     }
 }
