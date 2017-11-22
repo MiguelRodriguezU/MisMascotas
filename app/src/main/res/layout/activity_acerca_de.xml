@@ -28,6 +28,15 @@
             android:gravity="center"
             android:text="@string/tv_about_descripcion"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="@string/tv_about_email"/>
+
+
+
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
