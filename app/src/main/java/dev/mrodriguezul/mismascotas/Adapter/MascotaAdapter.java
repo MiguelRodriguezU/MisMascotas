@@ -1,4 +1,4 @@
-package dev.mrodriguezul.mismascotas;
+package dev.mrodriguezul.mismascotas.Adapter;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import dev.mrodriguezul.mismascotas.R;
+import dev.mrodriguezul.mismascotas.beans.MascotaItem;
 
 /**
  * Created by MIGUEL on 12/11/2017.

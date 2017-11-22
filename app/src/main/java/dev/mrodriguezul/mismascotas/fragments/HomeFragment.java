@@ -1,7 +1,5 @@
 package dev.mrodriguezul.mismascotas.fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,8 +10,8 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import dev.mrodriguezul.mismascotas.MascotaAdapter;
-import dev.mrodriguezul.mismascotas.MascotaItem;
+import dev.mrodriguezul.mismascotas.Adapter.MascotaAdapter;
+import dev.mrodriguezul.mismascotas.beans.MascotaItem;
 import dev.mrodriguezul.mismascotas.R;
 
 public class HomeFragment extends Fragment {

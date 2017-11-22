@@ -9,6 +9,9 @@ import android.view.Menu;
 
 import java.util.ArrayList;
 
+import dev.mrodriguezul.mismascotas.Adapter.MascotaAdapter;
+import dev.mrodriguezul.mismascotas.beans.MascotaItem;
+
 public class Favoritos extends AppCompatActivity {
 
     private RecyclerView rvMascotasFavoritas;

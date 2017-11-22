@@ -5,9 +5,13 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="recycler_padding">16dp</dimen>
     <dimen name="recycler_margin">16dp</dimen>
+    <dimen name="recycler_margin_grid">5dp</dimen>
     <dimen name="recycler_corner_radius">4dp</dimen>
     <dimen name="recycler_margin_nombre">10dp</dimen>
     <dimen name="recycler_margin_puntuacion">10dp</dimen>
     <dimen name="titulo_height">40dp</dimen>
     <dimen name="titulo_margin">10dp</dimen>
+    <dimen name="perfil_foto_mascota">150dp</dimen>
+    <dimen name="perfil_nombre_mascota">10dp</dimen>
+    <dimen name="perfil_nombre_tamanio">20dp</dimen>
 </resources>

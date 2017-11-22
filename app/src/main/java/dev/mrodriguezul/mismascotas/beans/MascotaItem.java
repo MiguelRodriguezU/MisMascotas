@@ -1,4 +1,4 @@
-package dev.mrodriguezul.mismascotas;
+package dev.mrodriguezul.mismascotas.beans;
 
 /**
  * Created by MIGUEL on 12/11/2017.
