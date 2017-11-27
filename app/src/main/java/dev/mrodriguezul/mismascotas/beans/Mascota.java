@@ -4,15 +4,20 @@ package dev.mrodriguezul.mismascotas.beans;
  * Created by MIGUEL on 12/11/2017.
  */
 
-public class MascotaItem {
+public class Mascota {
+    private int id;
     private String nombre;
     private int foto;
     private int raiting;
 
-    public MascotaItem(String nombre, int foto, int raiting) {
+    public Mascota(String nombre, int foto, int raiting) {
         this.nombre = nombre;
         this.foto = foto;
         this.raiting = raiting;
+    }
+
+    public Mascota() {
+
     }
 
     public String getNombre() {
@@ -37,5 +42,13 @@ public class MascotaItem {
 
     public void setRaiting(int raiting) {
         this.raiting = raiting;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -11,11 +11,15 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import dev.mrodriguezul.mismascotas.Adapter.MascotaAdapter;
-import dev.mrodriguezul.mismascotas.beans.MascotaItem;
+import dev.mrodriguezul.mismascotas.beans.Mascota;
 import dev.mrodriguezul.mismascotas.R;
+import dev.mrodriguezul.mismascotas.db.LocalData;
+import dev.mrodriguezul.mismascotas.presentador.HomeFragmentPresenter;
+import dev.mrodriguezul.mismascotas.presentador.IHomeFragmentPresenter;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements IHomeFragment{
     private RecyclerView rvMascotas;
+    private IHomeFragmentPresenter presenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -23,35 +27,60 @@ public class HomeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         rvMascotas = (RecyclerView) v.findViewById(R.id.rvMascotas);
 
-        LinearLayoutManager llm = new LinearLayoutManager(this.getActivity());
+        presenter = new HomeFragmentPresenter(this,getActivity());
+
+        presenter.obtenerMascotas();
+
+        /*LinearLayoutManager llm = new LinearLayoutManager(this.getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
 
-        rvMascotas.setLayoutManager(llm);
+        rvMascotas.setLayoutManager(llm);*/
 
-        inicializarLista();
+        //inicializarLista();
 
         return v;
     }
 
-    private void inicializarLista(){
-        MascotaAdapter adaptador = new MascotaAdapter(this.getActivity(),obtenerMascotas());
+    /*private void inicializarLista(){
+        ArrayList<Mascota> mascotas = LocalData.getInstance(this.getContext()).obtenerMascotas();
+        MascotaAdapter adaptador = new MascotaAdapter(this.getActivity(),mascotas);
+        rvMascotas.setAdapter(adaptador);
+    }*/
+
+    @Override
+    public void generarLinearLayoutVertical() {
+        LinearLayoutManager llm = new LinearLayoutManager(this.getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+
+        rvMascotas.setLayoutManager(llm);
+    }
+
+    @Override
+    public MascotaAdapter crearAdaptador(ArrayList<Mascota> mascotas) {
+        MascotaAdapter adaptador = new MascotaAdapter(this.getActivity(),mascotas);
+        return adaptador;
+    }
+
+    @Override
+    public void inicializarAdaptador(MascotaAdapter adaptador) {
         rvMascotas.setAdapter(adaptador);
     }
 
-    private ArrayList<MascotaItem> obtenerMascotas(){
-        ArrayList<MascotaItem> mascotas = new ArrayList<MascotaItem>();
-        mascotas.add(new MascotaItem("Mascota 1",R.drawable.ic_pet_1,4));
-        mascotas.add(new MascotaItem("Mascota 2",R.drawable.ic_pet_2,10));
-        mascotas.add(new MascotaItem("Mascota 3",R.drawable.ic_pet_3,10));
-        mascotas.add(new MascotaItem("Mascota 4",R.drawable.ic_pet_4,3));
-        mascotas.add(new MascotaItem("Mascota 5",R.drawable.ic_pet_5,5));
-        mascotas.add(new MascotaItem("Mascota 6",R.drawable.ic_pet_6,10));
-        mascotas.add(new MascotaItem("Mascota 7",R.drawable.ic_pet_7,30));
-        mascotas.add(new MascotaItem("Mascota 8",R.drawable.ic_pet_8,10));
-        mascotas.add(new MascotaItem("Mascota 9",R.drawable.ic_pet_9,0));
-        mascotas.add(new MascotaItem("Mascota 10",R.drawable.ic_pet_10,1));
+    /*
+    private ArrayList<Mascota> obtenerMascotas(){
+        ArrayList<Mascota> mascotas = new ArrayList<Mascota>();
+        mascotas.add(new Mascota("Mascota 1",R.drawable.ic_pet_1,4));
+        mascotas.add(new Mascota("Mascota 2",R.drawable.ic_pet_2,10));
+        mascotas.add(new Mascota("Mascota 3",R.drawable.ic_pet_3,10));
+        mascotas.add(new Mascota("Mascota 4",R.drawable.ic_pet_4,3));
+        mascotas.add(new Mascota("Mascota 5",R.drawable.ic_pet_5,5));
+        mascotas.add(new Mascota("Mascota 6",R.drawable.ic_pet_6,10));
+        mascotas.add(new Mascota("Mascota 7",R.drawable.ic_pet_7,30));
+        mascotas.add(new Mascota("Mascota 8",R.drawable.ic_pet_8,10));
+        mascotas.add(new Mascota("Mascota 9",R.drawable.ic_pet_9,0));
+        mascotas.add(new Mascota("Mascota 10",R.drawable.ic_pet_10,1));
 
         return mascotas;
-    }
+    }*/
 
 }

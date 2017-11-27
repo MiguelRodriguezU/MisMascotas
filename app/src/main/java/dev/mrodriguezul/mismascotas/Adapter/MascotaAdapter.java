@@ -13,17 +13,17 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import dev.mrodriguezul.mismascotas.R;
-import dev.mrodriguezul.mismascotas.beans.MascotaItem;
+import dev.mrodriguezul.mismascotas.beans.Mascota;
 
 /**
  * Created by MIGUEL on 12/11/2017.
  */
 
 public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaViewHolder>  {
-    private ArrayList<MascotaItem> mascotas;
+    private ArrayList<Mascota> mascotas;
     private Activity actividad;
 
-    public MascotaAdapter(Activity actividad,ArrayList<MascotaItem> mascotas) {
+    public MascotaAdapter(Activity actividad,ArrayList<Mascota> mascotas) {
         this.mascotas = mascotas;
         this.actividad = actividad;
     }
@@ -37,7 +37,7 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
 
     @Override
     public void onBindViewHolder(MascotaViewHolder holder, int position) {
-        final MascotaItem mascota = mascotas.get(position);
+        final Mascota mascota = mascotas.get(position);
         holder.ivMascotaFoto.setImageResource(mascota.getFoto());
         holder.tvMascotaNombre.setText(mascota.getNombre());
         holder.tvMascotaRaiting.setText(""+mascota.getRaiting());
