@@ -21,8 +21,12 @@ public class ConstructorMascotas {
 
     public ArrayList<Mascota> obtenerMascotas(){
         LocalData db = LocalData.getInstance(this.contexto);
-        //insertar3Contactos(db);
         return db.obtenerMascotas();
+    }
+
+    public ArrayList<Mascota> obtenerMascotasRankeadas(){
+        LocalData db = LocalData.getInstance(this.contexto);
+        return db.obtenerMascotasRankeadas();
     }
 
     public void insertarMascota(Mascota mascota){

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import dev.mrodriguezul.mismascotas.Adapter.MascotaAdapter;
 import dev.mrodriguezul.mismascotas.beans.Mascota;
+import dev.mrodriguezul.mismascotas.db.ConstructorMascotas;
 
 public class Favoritos extends AppCompatActivity {
 
@@ -44,19 +45,12 @@ public class Favoritos extends AppCompatActivity {
     }
 
     private ArrayList<Mascota> obtenerMascotasFavoritas(){
-        ArrayList<Mascota> mascotas = new ArrayList<Mascota>();
-        mascotas.add(new Mascota("Mascota 1",R.drawable.ic_pet_1,4));
-        mascotas.add(new Mascota("Mascota 3",R.drawable.ic_pet_3,10));
-        mascotas.add(new Mascota("Mascota 5",R.drawable.ic_pet_5,5));
-        mascotas.add(new Mascota("Mascota 8",R.drawable.ic_pet_8,10));
-        mascotas.add(new Mascota("Mascota 10",R.drawable.ic_pet_10,1));
-
+        ArrayList<Mascota> mascotas = new ConstructorMascotas(this).obtenerMascotasRankeadas();
         return mascotas;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_favoritos, menu);
         return true;
     }

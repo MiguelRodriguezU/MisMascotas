@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import dev.mrodriguezul.mismascotas.R;
 import dev.mrodriguezul.mismascotas.beans.Mascota;
+import dev.mrodriguezul.mismascotas.db.ConstructorMascotas;
 
 /**
  * Created by MIGUEL on 12/11/2017.
@@ -36,7 +37,7 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
     }
 
     @Override
-    public void onBindViewHolder(MascotaViewHolder holder, int position) {
+    public void onBindViewHolder(final MascotaViewHolder holder, int position) {
         final Mascota mascota = mascotas.get(position);
         holder.ivMascotaFoto.setImageResource(mascota.getFoto());
         holder.tvMascotaNombre.setText(mascota.getNombre());
@@ -46,6 +47,10 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
             @Override
             public void onClick(View v) {
                 Toast.makeText(actividad,"Huesito arriba!!"+mascota.getNombre(),Toast.LENGTH_SHORT).show();
+                ConstructorMascotas constructorContactos = new ConstructorMascotas(actividad);
+                constructorContactos.raitearMascota(mascota);
+
+                holder.tvMascotaRaiting.setText(constructorContactos.obtenerRaitingMascota(mascota)+"");
             }
         });
     }
