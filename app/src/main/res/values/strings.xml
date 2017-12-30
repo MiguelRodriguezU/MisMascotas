@@ -5,6 +5,7 @@
     <string name="menu_favoritos">Favoritos</string>
     <string name="menu_contacto">Contacto</string>
     <string name="menu_aceraca_de">Acerca De</string>
+    <string name="menu_configurar_cuenta">Configurar Cuenta</string>
     <string name="menu_otra_opcion">Opción</string>
 
     <string name="tv_contacto_titulo">Contacto</string>

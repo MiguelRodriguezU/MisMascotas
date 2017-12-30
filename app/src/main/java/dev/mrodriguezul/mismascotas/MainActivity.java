@@ -87,6 +87,10 @@ public class MainActivity extends AppCompatActivity {
             verAcercaDe();
         }
 
+        if(id == R.id.menu_configurar_cuenta ){
+            verConfigurarCuenta();
+        }
+        
         return super.onOptionsItemSelected(item);
     }
 
@@ -102,6 +106,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void verAcercaDe(){
         Intent intent = new Intent(this,AcercaDe.class);
+        startActivity(intent);
+    }
+
+    private void verConfigurarCuenta(){
+        Intent intent = new Intent(this,ConfigurarCuenta.class);
         startActivity(intent);
     }
 }
