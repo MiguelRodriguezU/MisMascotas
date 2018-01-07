@@ -14,4 +14,6 @@
     <dimen name="perfil_foto_mascota">150dp</dimen>
     <dimen name="perfil_nombre_mascota">10dp</dimen>
     <dimen name="perfil_nombre_tamanio">20dp</dimen>
+    <dimen name="cuenta_app_tamanio">30dp</dimen>
+
 </resources>

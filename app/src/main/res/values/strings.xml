@@ -24,5 +24,8 @@
     <string name="tv_about_email">correo: miguel.rodriguez.u@gmail.com</string>
     <string name="tv_about_nombre">Miguel Rodríguez</string>
     <string name="tv_about_descripcion">Hola, soy ingeniero de sistemas y me encanta desarrollar aplicaciones móviles</string>
+    
+    <string name="et_cuenta_usuario">Escribe tu usuario</string>
+    <string name="btn_cuenta_guardar">Guardar Cuenta</string>
 
 </resources>
