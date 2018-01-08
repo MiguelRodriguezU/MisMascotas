@@ -33,6 +33,9 @@ public class MediaInsDeserializador implements JsonDeserializer<MediaInsResponse
         for(int i=0 ; i< mediaInsResponseData.size(); i++){
             JsonObject mediaResponseDataObject = mediaInsResponseData.get(i).getAsJsonObject();
 
+            JsonObject userJson = mediaResponseDataObject.getAsJsonObject(JsonKeys.USERINS_USER);
+            String nombre = userJson.get(JsonKeys.USERINS_FULLNAME).getAsString();
+
             JsonObject imageJson = mediaResponseDataObject.getAsJsonObject(JsonKeys.MEDIAINS_IMAGES);
             JsonObject stdResolution = imageJson.getAsJsonObject(JsonKeys.MEDIAINS_STANDARD_RESOLUTION);
 
@@ -42,6 +45,7 @@ public class MediaInsDeserializador implements JsonDeserializer<MediaInsResponse
             int likes = likesJson.get(JsonKeys.MEDIAINS_LIKES_COUNT).getAsInt();
 
             MediaIns mediaActual = new MediaIns();
+            mediaActual.setNombre(nombre);
             mediaActual.setUrl(urlFoto);
             mediaActual.setLikes(likes);
 

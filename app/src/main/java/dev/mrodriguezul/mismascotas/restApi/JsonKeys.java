@@ -6,6 +6,7 @@ public class JsonKeys {
     public static final String USERINS_USERNAME                     = "username";
     public static final String USERINS_URL                          = "profile_picture";
     public static final String USERINS_FULLNAME                     = "full_name";
+    public static final String USERINS_USER                         = "user";
 
     public static final String MEDIAINS_RESPONSE_ARRAY              = "data";
     public static final String MEDIAINS_IMAGES                      = "images";
@@ -13,6 +14,12 @@ public class JsonKeys {
     public static final String MEDIAINS_URL                         = "url";
     public static final String MEDIAINS_LIKES                       = "likes";
     public static final String MEDIAINS_LIKES_COUNT                 = "count";
+
+    public static final String FOLLOWER_RESPONSE_ARRAY              = "data";
+    public static final String FOLLOWER_ID                          = "id";
+    public static final String FOLLOWER_USERNAME                    = "username";
+    public static final String FOLLOWER_FULL_NAME                   = "full_name";
+    public static final String FOLLOWER_PROFILE_PIC                 = "profile_picture";
 
 
 }

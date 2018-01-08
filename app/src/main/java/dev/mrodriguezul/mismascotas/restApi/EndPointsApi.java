@@ -1,5 +1,6 @@
 package dev.mrodriguezul.mismascotas.restApi;
 
+import dev.mrodriguezul.mismascotas.restApi.model.FollowerResponse;
 import dev.mrodriguezul.mismascotas.restApi.model.MediaInsResponse;
 import dev.mrodriguezul.mismascotas.restApi.model.UsuarioInsResponse;
 import retrofit2.Call;
@@ -14,4 +15,7 @@ public interface EndPointsApi {
 
     @GET(ConstantesRestApi.URL_GET_RECENT_MEDIA_USER)
     Call<MediaInsResponse> getRecentMediaUser(@Path("id") String userId);
+
+    @GET(ConstantesRestApi.URL_GET_FOLLOWERS)
+    Call<FollowerResponse> getFollowers();
 }

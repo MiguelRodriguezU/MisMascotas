@@ -37,14 +37,18 @@ public class PerfilFragment extends Fragment implements IPerfilFragment{
 
         presenter = new PerfilFragmentPresenter(this,getContext());
 
+        //el nombre del usuario se obtiene de la clase preferences
         String usernameApp = Preferences.getInstancia(getContext()).getUsuarioNombre();
 
 
+        //por temas de pruebas he colocado el código de mi usuario
         usernameApp = "mrodriguezul";
         Log.i("test-mascotas","Usuario Instagram: "+usernameApp);
 
         tvUsername.setText(usernameApp);
-        presenter.obtenerUsuariosInstagramBySearch(usernameApp);
+        if(!usernameApp.equals("")){
+            presenter.obtenerUsuariosInstagramBySearch(usernameApp);
+        }
 
         return v;
     }

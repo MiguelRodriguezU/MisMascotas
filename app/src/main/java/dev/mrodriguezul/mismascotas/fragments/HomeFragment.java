@@ -11,15 +11,20 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import dev.mrodriguezul.mismascotas.Adapter.MascotaAdapter;
+import dev.mrodriguezul.mismascotas.Adapter.TimelineAdapter;
+import dev.mrodriguezul.mismascotas.beans.Follower;
 import dev.mrodriguezul.mismascotas.beans.Mascota;
 import dev.mrodriguezul.mismascotas.R;
+import dev.mrodriguezul.mismascotas.beans.MediaIns;
 import dev.mrodriguezul.mismascotas.db.LocalData;
 import dev.mrodriguezul.mismascotas.presentador.HomeFragmentPresenter;
 import dev.mrodriguezul.mismascotas.presentador.IHomeFragmentPresenter;
 
-public class HomeFragment extends Fragment implements IHomeFragment{
+public class HomeFragment  extends Fragment implements IHomeFragment{
     private RecyclerView rvMascotas;
     private IHomeFragmentPresenter presenter;
+    private TimelineAdapter adaptadorTimeline = null;
+    private ArrayList<MediaIns> mediasFollowers;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -29,14 +34,16 @@ public class HomeFragment extends Fragment implements IHomeFragment{
 
         presenter = new HomeFragmentPresenter(this,getActivity());
 
-        presenter.obtenerMascotas();
+        //con esta funcion se invoca para obtener de la base de datos
+        //presenter.obtenerMascotas();
 
-        /*LinearLayoutManager llm = new LinearLayoutManager(this.getActivity());
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        //para invocar desde el api
+        presenter.obtenerFollowers();
 
-        rvMascotas.setLayoutManager(llm);*/
-
-        //inicializarLista();
+        //para probar la descarga de Medias de los follower
+        /*ArrayList<Follower> followers = new ArrayList<>();
+        followers.add(new Follower("6343508898","mrodriguezul","Miguel Rodríguez","url"));
+        presenter.obtenerMediasFollowers(followers);*/
 
         return v;
     }
@@ -64,6 +71,37 @@ public class HomeFragment extends Fragment implements IHomeFragment{
     @Override
     public void inicializarAdaptador(MascotaAdapter adaptador) {
         rvMascotas.setAdapter(adaptador);
+    }
+
+    @Override
+    public TimelineAdapter crearAdaptadorTimeline(ArrayList<MediaIns> medias) {
+        if(adaptadorTimeline == null){
+            mediasFollowers = medias;
+            adaptadorTimeline = new TimelineAdapter(this.getActivity(),medias);
+        }
+        return adaptadorTimeline;
+    }
+
+    @Override
+    public void inicializarAdaptadorTimeline(TimelineAdapter adaptador) {
+        rvMascotas.setAdapter(adaptador);
+    }
+
+    @Override
+    public boolean verificaAdaptador() {
+        if(adaptadorTimeline != null){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void añadirMedias(ArrayList<MediaIns> medias) {
+        int sizeInicial = medias.size();
+        for(int i=0; i<sizeInicial;i++){
+            this.mediasFollowers.add(sizeInicial + i, medias.get(i));
+        }
+        adaptadorTimeline.notifyDataSetChanged();
     }
 
     /*

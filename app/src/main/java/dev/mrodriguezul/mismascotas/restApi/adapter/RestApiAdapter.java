@@ -7,8 +7,10 @@ import java.util.concurrent.TimeUnit;
 
 import dev.mrodriguezul.mismascotas.restApi.ConstantesRestApi;
 import dev.mrodriguezul.mismascotas.restApi.EndPointsApi;
+import dev.mrodriguezul.mismascotas.restApi.deserializador.FollowerDeserializador;
 import dev.mrodriguezul.mismascotas.restApi.deserializador.MediaInsDeserializador;
 import dev.mrodriguezul.mismascotas.restApi.deserializador.UsuarioInsDeserializador;
+import dev.mrodriguezul.mismascotas.restApi.model.FollowerResponse;
 import dev.mrodriguezul.mismascotas.restApi.model.MediaInsResponse;
 import dev.mrodriguezul.mismascotas.restApi.model.UsuarioInsResponse;
 import okhttp3.OkHttpClient;
@@ -56,6 +58,12 @@ public class RestApiAdapter {
     public Gson construyeGSONDeserializadoMediaUser(){
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(MediaInsResponse.class, new MediaInsDeserializador());
+        return gsonBuilder.create();
+    }
+
+    public Gson construyeGSONDeserializadoFollowers(){
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(FollowerResponse.class, new FollowerDeserializador());
         return gsonBuilder.create();
     }
 }

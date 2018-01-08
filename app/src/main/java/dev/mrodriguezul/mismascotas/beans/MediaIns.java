@@ -1,15 +1,25 @@
 package dev.mrodriguezul.mismascotas.beans;
 
 public class MediaIns {
+    private String nombre;
     private String url;
     private int likes;
 
-    public MediaIns(String url, int likes) {
+    public MediaIns(String nombre, String url, int likes) {
+        this.nombre = nombre;
         this.url = url;
         this.likes = likes;
     }
 
     public MediaIns() {
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getUrl() {
