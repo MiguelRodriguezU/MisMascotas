@@ -27,5 +27,7 @@
     
     <string name="et_cuenta_usuario">Escribe tu usuario</string>
     <string name="btn_cuenta_guardar">Guardar Cuenta</string>
+    <string name="menu_recibir_notificacion">Recibir Notificaciones</string>
+    <string name="msg_recibir_notificaciones">Aún no ha registrado el nombre de usuario de instagram</string>
 
 </resources>

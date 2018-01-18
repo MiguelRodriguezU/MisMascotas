@@ -9,14 +9,25 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
 
 import dev.mrodriguezul.mismascotas.Adapter.PageAdapter;
+import dev.mrodriguezul.mismascotas.db.Preferences;
 import dev.mrodriguezul.mismascotas.fragments.HomeFragment;
 import dev.mrodriguezul.mismascotas.fragments.PerfilFragment;
+import dev.mrodriguezul.mismascotas.restApi.EndPointsApi;
+import dev.mrodriguezul.mismascotas.restApi.adapter.RestApiAdapter;
+import dev.mrodriguezul.mismascotas.restApi.model.CredencialResponse;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -91,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
             verConfigurarCuenta();
         }
 
+        if(id == R.id.menu_recibir_notificacion){
+            registrarUsuario();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -112,5 +127,46 @@ public class MainActivity extends AppCompatActivity {
     private void verConfigurarCuenta(){
         Intent intent = new Intent(this,ConfigurarCuenta.class);
         startActivity(intent);
+    }
+
+    private void registrarUsuario(){
+        String usernameAppInstagram = Preferences.getInstancia(this).getUsuarioNombre();
+        if(!usernameAppInstagram.equals("")){
+            Toast.makeText(this,"Registrar el usuario",Toast.LENGTH_LONG).show();
+
+            String token = FirebaseInstanceId.getInstance().getToken();
+            Log.i("test-mascotas","Token Firebase: "+token);
+
+            enviarusuario(token, usernameAppInstagram);
+
+        }else{
+            Toast.makeText(this,getResources().getString(R.string.msg_recibir_notificaciones),Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void enviarusuario(String token, String usuarioInstagram){
+
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        EndPointsApi endPoints = restApiAdapter.establecerConexionRestApi();
+        Call<CredencialResponse> credencialResponseCall = endPoints.registrarTokenId(token,usuarioInstagram);
+
+        credencialResponseCall.enqueue(new Callback<CredencialResponse>() {
+            @Override
+            public void onResponse(Call<CredencialResponse> call, Response<CredencialResponse> response) {
+                CredencialResponse credencialResponse = response.body();
+
+                if(credencialResponse != null){
+                    Log.i("test-mascotas","Respuesta de Firebase:  "+credencialResponse.getId());
+                    Log.i("test-mascotas","Respuesta de Firebase:  "+credencialResponse.getToken());
+                }else{
+                    Log.i("test-mascotas","El servicio se encuentra inactivo");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CredencialResponse> call, Throwable t) {
+
+            }
+        });
     }
 }

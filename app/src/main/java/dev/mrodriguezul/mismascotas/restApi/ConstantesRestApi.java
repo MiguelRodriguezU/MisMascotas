@@ -20,4 +20,10 @@ public class ConstantesRestApi {
     public static final String KEY_GET_FOLLOWERS = "users/self/follows";
     public static final String URL_GET_FOLLOWERS = KEY_GET_FOLLOWERS + KEY_ACCESS_TOKEN + ACCESS_TOKEN;
 
+    /*Rutas para grabar server Notificaciones*/
+    public static final String ROOT_URL_NOTIFICACION = "https://intense-tor-20311.herokuapp.com/";
+    public static final String KEY_POST_USUARIO = "registrar-usuario/";
+
+
+
 }

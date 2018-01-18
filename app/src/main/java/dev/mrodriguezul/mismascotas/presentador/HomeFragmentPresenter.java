@@ -92,8 +92,10 @@ public class HomeFragmentPresenter implements IHomeFragmentPresenter{
                 @Override
                 public void onResponse(Call<MediaInsResponse> call, Response<MediaInsResponse> response) {
                     MediaInsResponse mediaInsResponse = response.body();
-                    ArrayList<MediaIns> mediasFollowers = mediaInsResponse.getMediasInstagram();
-                    mostrarTimeLine(mediasFollowers);
+                    if(mediaInsResponse != null) {
+                        ArrayList<MediaIns> mediasFollowers = mediaInsResponse.getMediasInstagram();
+                        mostrarTimeLine(mediasFollowers);
+                    }
                 }
 
                 @Override

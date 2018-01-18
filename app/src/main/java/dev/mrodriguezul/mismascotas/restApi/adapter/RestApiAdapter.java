@@ -39,6 +39,15 @@ public class RestApiAdapter {
         return retrofit.create(EndPointsApi.class);
     }
 
+    public EndPointsApi establecerConexionRestApi(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(ConstantesRestApi.ROOT_URL_NOTIFICACION)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        return retrofit.create(EndPointsApi.class);
+    }
+
     private OkHttpClient getClientOkHttp(){
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(1, TimeUnit.MINUTES)

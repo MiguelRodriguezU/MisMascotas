@@ -23,8 +23,14 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/menu_configurar_cuenta"
-        android:orderInCategory="102"
+        android:orderInCategory="103"
         android:title="@string/menu_configurar_cuenta"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_recibir_notificacion"
+        android:orderInCategory="104"
+        android:title="@string/menu_recibir_notificacion"
         app:showAsAction="never" />
 
 </menu>
