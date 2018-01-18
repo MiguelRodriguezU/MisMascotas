@@ -92,8 +92,10 @@ public class HomeFragmentPresenter implements IHomeFragmentPresenter{
                 @Override
                 public void onResponse(Call<MediaInsResponse> call, Response<MediaInsResponse> response) {
                     MediaInsResponse mediaInsResponse = response.body();
-                    ArrayList<MediaIns> mediasFollowers = mediaInsResponse.getMediasInstagram();
-                    mostrarTimeLine(mediasFollowers);
+                    if(mediaInsResponse != null){
+                        ArrayList<MediaIns> mediasFollowers = mediaInsResponse.getMediasInstagram();
+                        mostrarTimeLine(mediasFollowers);
+                    }
                 }
 
                 @Override
@@ -106,6 +108,10 @@ public class HomeFragmentPresenter implements IHomeFragmentPresenter{
 
     @Override
     public void mostrarTimeLine(ArrayList<MediaIns> mediasFollowers) {
+        if(mediasFollowers == null){
+            Log.e("test-mascotas", "La lista es NULL");
+            return;
+        }
         if(iHomeFragment.verificaAdaptador() == false){//si aún no se crea el adaptador
             iHomeFragment.inicializarAdaptadorTimeline(iHomeFragment.crearAdaptadorTimeline(mediasFollowers));
             iHomeFragment.generarLinearLayoutVertical();
