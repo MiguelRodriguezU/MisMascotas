@@ -29,5 +29,6 @@
     <string name="btn_cuenta_guardar">Guardar Cuenta</string>
     <string name="menu_recibir_notificacion">Recibir Notificaciones</string>
     <string name="msg_recibir_notificaciones">Aún no ha registrado el nombre de usuario de instagram</string>
+    <string name="msg_registrar_usuario">El usuario fue registrado correctamente para recibir notificaciones</string>
 
 </resources>

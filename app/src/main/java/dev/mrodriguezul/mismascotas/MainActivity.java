@@ -132,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
     private void registrarUsuario(){
         String usernameAppInstagram = Preferences.getInstancia(this).getUsuarioNombre();
         if(!usernameAppInstagram.equals("")){
-            Toast.makeText(this,"Registrar el usuario",Toast.LENGTH_LONG).show();
 
             String token = FirebaseInstanceId.getInstance().getToken();
             Log.i("test-mascotas","Token Firebase: "+token);
@@ -156,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
                 CredencialResponse credencialResponse = response.body();
 
                 if(credencialResponse != null){
+                    Toast.makeText(MainActivity.this,MainActivity.this.getResources().getString(R.string.msg_registrar_usuario),Toast.LENGTH_LONG).show();
                     Log.i("test-mascotas","Respuesta de Firebase:  "+credencialResponse.getId());
                     Log.i("test-mascotas","Respuesta de Firebase:  "+credencialResponse.getToken());
                 }else{
