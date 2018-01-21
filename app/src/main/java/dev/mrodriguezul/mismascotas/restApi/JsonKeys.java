@@ -9,6 +9,7 @@ public class JsonKeys {
     public static final String USERINS_USER                         = "user";
 
     public static final String MEDIAINS_RESPONSE_ARRAY              = "data";
+    public static final String MEDIAINS_ID                          = "id";
     public static final String MEDIAINS_IMAGES                      = "images";
     public static final String MEDIAINS_STANDARD_RESOLUTION         = "standard_resolution";
     public static final String MEDIAINS_URL                         = "url";

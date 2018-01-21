@@ -38,12 +38,12 @@ public class HomeFragment  extends Fragment implements IHomeFragment{
         //presenter.obtenerMascotas();
 
         //para invocar desde el api
-        presenter.obtenerFollowers();
+        //presenter.obtenerFollowers();
 
         //para probar la descarga de Medias de los follower
-        /*ArrayList<Follower> followers = new ArrayList<>();
+        ArrayList<Follower> followers = new ArrayList<>();
         followers.add(new Follower("6343508898","mrodriguezul","Miguel Rodríguez","url"));
-        presenter.obtenerMediasFollowers(followers);*/
+        presenter.obtenerMediasFollowers(followers);
 
         return v;
     }

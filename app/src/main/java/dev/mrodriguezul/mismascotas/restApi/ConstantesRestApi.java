@@ -20,9 +20,14 @@ public class ConstantesRestApi {
     public static final String KEY_GET_FOLLOWERS = "users/self/follows";
     public static final String URL_GET_FOLLOWERS = KEY_GET_FOLLOWERS + KEY_ACCESS_TOKEN + ACCESS_TOKEN;
 
+    public static final String KEY_SET_LIKE_MEDIA = "media/{media-id}/likes";
+    public static final String URL_SET_LIKE_MEDIA = ROOT_URL + KEY_SET_LIKE_MEDIA + KEY_ACCESS_TOKEN + ACCESS_TOKEN;
+
     /*Rutas para grabar server Notificaciones*/
     public static final String ROOT_URL_NOTIFICACION = "https://intense-tor-20311.herokuapp.com/";
     public static final String KEY_POST_USUARIO = "registrar-usuario/";
+
+    public static final String KEY_GET_LIKE = "instagram-like/{id_foto_instagram}/{id_usuario_instagram}/{id_dispositivo}/";
 
 
 
