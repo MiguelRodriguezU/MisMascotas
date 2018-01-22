@@ -40,6 +40,14 @@ public class HomeFragment  extends Fragment implements IHomeFragment{
         //para invocar desde el api
         //presenter.obtenerFollowers();
 
+        /*
+        * Por tema de pruebas y por motivos que solamente puedes tener acceso a los followers que tienen perfil publico
+        * lastimosamente solo tengo un follower que aceptó probar mi app, y este usuario tiene perfil privado
+        * y siendo así no podré ver sus feeds media, entonces partiendo de ello no se mostraría nada en el timeline
+        * por eso, tomé mi usuario: mrodriguezul, asumiendo que es un follower que se obtiene de la función anterior (presenter.obtenerFollowers()) y que
+        * exploraré sus feed media para mostrarlo en el timeline
+        * Así partiré construyendo un follower con mi usuario
+        * */
         //para probar la descarga de Medias de los follower
         ArrayList<Follower> followers = new ArrayList<>();
         followers.add(new Follower("6343508898","mrodriguezul","Miguel Rodríguez","url"));

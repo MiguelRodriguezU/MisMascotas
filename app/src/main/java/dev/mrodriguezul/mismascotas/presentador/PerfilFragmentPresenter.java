@@ -65,24 +65,26 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
         EndPointsApi endPointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonUsuariosInsBySearch);
         Call<UsuarioInsResponse> usuarioInsResponseCall = endPointsApi.getUsersInsBySearch(username);
 
-        Log.i("test-mascotas","Llamada al api!!");
-
         usuarioInsResponseCall.enqueue(new Callback<UsuarioInsResponse>() {
             @Override
             public void onResponse(Call<UsuarioInsResponse> call, Response<UsuarioInsResponse> response) {
                 UsuarioInsResponse usuarioInsResponse = response.body();
-                ArrayList<UsuarioIns> usuariosIns = usuarioInsResponse.getUsuariosInstagram();
-                UsuarioIns usuarioApp = null;
-                for(int i=0;i<usuariosIns.size();i++){
-                    usuarioApp = usuariosIns.get(i);
 
-                    if(usuarioApp.getUsername().equals(username)){
-                        Log.i("test-mascotas","Este es el usuario que debo analizar!");
-                        break;
+                if(usuarioInsResponse != null){
+
+                    ArrayList<UsuarioIns> usuariosIns = usuarioInsResponse.getUsuariosInstagram();
+                    UsuarioIns usuarioApp = null;
+                    for(int i=0;i<usuariosIns.size();i++){
+
+                        usuarioApp = usuariosIns.get(i);
+                        if(usuarioApp.getUsername().equals(username)){
+                            Log.i("test-mascotas","Este es el usuario: "+username+" que debo analizar!: ");
+                            break;
+                        }
                     }
-                }
-                if(usuarioApp != null){
-                    obtenerMediaUsuario(usuarioApp.getId());
+                    if(usuarioApp != null){
+                        obtenerMediaUsuario(usuarioApp.getId());
+                    }
                 }
             }
 
@@ -107,12 +109,14 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
             @Override
             public void onResponse(Call<MediaInsResponse> call, Response<MediaInsResponse> response) {
                 MediaInsResponse mediaInsResponse = response.body();
-                medias = mediaInsResponse.getMediasInstagram();
-                for(int i=0;i<medias.size();i++){
-                    MediaIns media = medias.get(i);
-                    Log.i("test-mascotas","Medias: "+media.getUrl()+" - "+media.getLikes());
+                if(mediaInsResponse != null){
+                    medias = mediaInsResponse.getMediasInstagram();
+                    for(int i=0;i<medias.size();i++){
+                        MediaIns media = medias.get(i);
+                        Log.i("test-mascotas","Medias: "+media.getUrl()+" - "+media.getLikes());
+                    }
+                    mostrarResultado();
                 }
-                mostrarResultado();
             }
 
             @Override

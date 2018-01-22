@@ -40,9 +40,10 @@ public class PerfilFragment extends Fragment implements IPerfilFragment{
         //el nombre del usuario se obtiene de la clase preferences
         String usernameApp = Preferences.getInstancia(getContext()).getUsuarioNombre();
 
-
-        //por temas de pruebas he colocado el código de mi usuario
-        usernameApp = "mrodriguezul";
+        /*por temas de pruebas he colocado el código de mi usuario para ver las fotos de perfil, ya que con
+        Los demás usuarios se requiere que tenga perfil público sino, no se podrá explorar sus feeds
+        */
+        //usernameApp = "mrodriguezul";
         Log.i("test-mascotas","Usuario Instagram: "+usernameApp);
 
         tvUsername.setText(usernameApp);
