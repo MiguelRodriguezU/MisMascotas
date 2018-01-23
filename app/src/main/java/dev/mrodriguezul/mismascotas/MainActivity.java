@@ -51,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setUpViewPager();
+
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+            String accion = extras.getString("action");
+            initPage(accion);
+        }
     }
 
     public void setUpViewPager(){
@@ -59,6 +65,13 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_profile);
+
+    }
+
+    private void  initPage(String idPage){
+        if(idPage.equals("page-perfil")){
+            viewPager.setCurrentItem(1);
+        }
 
     }
 
