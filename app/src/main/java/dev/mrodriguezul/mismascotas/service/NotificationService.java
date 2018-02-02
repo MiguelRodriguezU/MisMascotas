@@ -4,10 +4,14 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.app.NotificationCompat.WearableExtender;
 import android.util.Log;
+import android.view.Gravity;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -20,14 +24,50 @@ import dev.mrodriguezul.mismascotas.R;
  */
 
 public class NotificationService extends FirebaseMessagingService {
+    private static final String TAG = "MyFirebaseMsgService";
+    private static final int NOTIFICATION_ID = 001;
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         //super.onMessageReceived(remoteMessage);
 
-        Intent perfil = new Intent(this, MainActivity.class);
-        perfil.putExtra("action", "page-perfil");
+        Intent intentPerfil = new Intent(this, MainActivity.class);
+        intentPerfil.putExtra("action", "page-perfil");
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, perfil, PendingIntent.FLAG_ONE_SHOT);
+        Intent intentFollow = new Intent();
+        intentFollow.setAction("action-follow");
+
+        Intent intentVerUsuario = new Intent();
+        intentFollow.setAction("action-verusuario");
+
+        PendingIntent pendingIntentPerfil = PendingIntent.getActivity(this, 0, intentPerfil, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntentFollow = PendingIntent.getActivity(this, 0, intentFollow, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntentVerusuario = PendingIntent.getActivity(this, 0, intentVerUsuario, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+        NotificationCompat.Action actionPerfil = new NotificationCompat.Action.Builder(R.drawable.ic_full_perfil,
+                        getString(R.string.action_perfil), pendingIntentPerfil)
+                        .build();
+
+        NotificationCompat.Action actionFollow = new NotificationCompat.Action.Builder(R.drawable.ic_full_follow,
+                getString(R.string.action_follow), pendingIntentFollow)
+                .build();
+
+        NotificationCompat.Action actionVerUsuario = new NotificationCompat.Action.Builder(R.drawable.ic_full_verusuario,
+                getString(R.string.action_verusuario), pendingIntentVerusuario)
+                .build();
+
+        //Se setea todas las acciones para el movil
+        NotificationCompat.WearableExtender wearableExtender =
+                new NotificationCompat.WearableExtender()
+                        .setHintHideIcon(true)
+                        .setBackground(BitmapFactory.decodeResource(getResources(),
+                                R.drawable.icons8_hotel))
+                        .setGravity(Gravity.CENTER_VERTICAL);
+
+        /*wearableExtender.addAction(actionPerfil)
+                        .addAction(actionFollow);*/
+
+        Log.i(TAG, "mrodriguezul - se creo la extención para el weareable");
 
         Uri sonido = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
@@ -36,11 +76,15 @@ public class NotificationService extends FirebaseMessagingService {
                 .setContentTitle(remoteMessage.getNotification().getTitle())
                 .setContentText(remoteMessage.getNotification().getBody())
                 .setSound(sonido)
-                .setContentIntent(pendingIntent)
+                .setContentIntent(pendingIntentPerfil)
                 .setAutoCancel(true)
-                .addAction(0,"action",pendingIntent);
+                .extend(wearableExtender.addAction(actionPerfil).addAction(actionFollow).addAction(actionVerUsuario));
+                //.addAction(0,"action",pendingIntentPerfil);
 
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0, notificacion.build());
+        Log.i(TAG, "mrodriguezul - Lanzamos la notificación!!");
+
+        //NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(NOTIFICATION_ID, notificacion.build());
     }
 }

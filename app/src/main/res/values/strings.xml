@@ -31,4 +31,8 @@
     <string name="msg_recibir_notificaciones">Aún no ha registrado el nombre de usuario de instagram</string>
     <string name="msg_registrar_usuario">El usuario fue registrado correctamente para recibir notificaciones</string>
 
+    <string name="action_perfil">Ver Perfil</string>
+    <string name="action_follow">Seguir</string>
+    <string name="action_verusuario">Ver Usuario</string>
+
 </resources>
