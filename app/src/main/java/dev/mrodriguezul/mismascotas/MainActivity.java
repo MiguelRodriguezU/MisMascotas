@@ -25,11 +25,13 @@ import dev.mrodriguezul.mismascotas.fragments.PerfilFragment;
 import dev.mrodriguezul.mismascotas.restApi.EndPointsApi;
 import dev.mrodriguezul.mismascotas.restApi.adapter.RestApiAdapter;
 import dev.mrodriguezul.mismascotas.restApi.model.CredencialResponse;
+import dev.mrodriguezul.mismascotas.service.ActionKeys;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "main-test-mascotas";
 
     private RecyclerView rvMascotas;
     private Toolbar toolbar;
@@ -52,10 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
         setUpViewPager();
 
-        Bundle extras = getIntent().getExtras();
-        if(extras != null){
-            String accion = extras.getString("action");
-            initPage(accion);
+        if(getIntent() != null) {
+            String action = getIntent().getAction();
+            initPage(action);
         }
     }
 
@@ -69,10 +70,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void  initPage(String idPage){
-        if(idPage.equals("page-perfil")){
+        if(idPage.equals(ActionKeys.ACTION_VIEW_PROFILE)){
             viewPager.setCurrentItem(1);
         }
-
     }
 
     private ArrayList<Fragment> agregarFragments(){

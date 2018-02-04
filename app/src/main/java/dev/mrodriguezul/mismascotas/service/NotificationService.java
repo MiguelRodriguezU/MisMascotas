@@ -31,37 +31,23 @@ public class NotificationService extends FirebaseMessagingService {
         //super.onMessageReceived(remoteMessage);
 
         Intent intentPerfil = new Intent(this, MainActivity.class);
-        intentPerfil.putExtra("action", "page-perfil");
-
-        Intent intentFollow = new Intent();
-        intentFollow.setAction("action-follow");
-
-        Intent intentVerUsuario = new Intent();
-        intentFollow.setAction("action-verusuario");
+        intentPerfil.setAction(ActionKeys.ACTION_VIEW_PROFILE);
+        Intent intentFollow = new Intent(ActionKeys.ACTION_FOLLOW);
+        Intent intentVerUsuario = new Intent(ActionKeys.ACTION_VIEWP_USER);
 
         PendingIntent pendingIntentPerfil = PendingIntent.getActivity(this, 0, intentPerfil, PendingIntent.FLAG_UPDATE_CURRENT);
-        PendingIntent pendingIntentFollow = PendingIntent.getActivity(this, 0, intentFollow, PendingIntent.FLAG_UPDATE_CURRENT);
-        PendingIntent pendingIntentVerusuario = PendingIntent.getActivity(this, 0, intentVerUsuario, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntentFollow = PendingIntent.getBroadcast(this, 0, intentFollow, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntentVerusuario = PendingIntent.getBroadcast(this, 0, intentVerUsuario, PendingIntent.FLAG_UPDATE_CURRENT);
 
-
-        NotificationCompat.Action actionPerfil = new NotificationCompat.Action.Builder(R.drawable.ic_full_perfil,
-                        getString(R.string.action_perfil), pendingIntentPerfil)
-                        .build();
-
-        NotificationCompat.Action actionFollow = new NotificationCompat.Action.Builder(R.drawable.ic_full_follow,
-                getString(R.string.action_follow), pendingIntentFollow)
-                .build();
-
-        NotificationCompat.Action actionVerUsuario = new NotificationCompat.Action.Builder(R.drawable.ic_full_verusuario,
-                getString(R.string.action_verusuario), pendingIntentVerusuario)
-                .build();
+        NotificationCompat.Action actionPerfil = new NotificationCompat.Action.Builder(R.drawable.ic_full_perfil,getString(R.string.action_perfil), pendingIntentPerfil).build();
+        NotificationCompat.Action actionFollow = new NotificationCompat.Action.Builder(R.drawable.ic_full_follow,getString(R.string.action_follow), pendingIntentFollow).build();
+        NotificationCompat.Action actionVerUsuario = new NotificationCompat.Action.Builder(R.drawable.ic_full_verusuario,getString(R.string.action_verusuario), pendingIntentVerusuario).build();
 
         //Se setea todas las acciones para el movil
         NotificationCompat.WearableExtender wearableExtender =
                 new NotificationCompat.WearableExtender()
                         .setHintHideIcon(true)
-                        .setBackground(BitmapFactory.decodeResource(getResources(),
-                                R.drawable.icons8_hotel))
+                        .setBackground(BitmapFactory.decodeResource(getResources(),R.drawable.bk_androidwear_notification))
                         .setGravity(Gravity.CENTER_VERTICAL);
 
         /*wearableExtender.addAction(actionPerfil)
@@ -78,7 +64,10 @@ public class NotificationService extends FirebaseMessagingService {
                 .setSound(sonido)
                 .setContentIntent(pendingIntentPerfil)
                 .setAutoCancel(true)
-                .extend(wearableExtender.addAction(actionPerfil).addAction(actionFollow).addAction(actionVerUsuario));
+                .extend(wearableExtender.addAction(actionPerfil).addAction(actionFollow).addAction(actionVerUsuario))
+                .addAction(actionFollow)
+                .addAction(actionVerUsuario);
+
                 //.addAction(0,"action",pendingIntentPerfil);
 
         Log.i(TAG, "mrodriguezul - Lanzamos la notificación!!");

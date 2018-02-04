@@ -32,6 +32,12 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
+        <receiver android:name=".service.NotificationBroadcast">
+            <intent-filter>
+                <action android:name="FOLLOW"/>
+                <action android:name="VIEW_USER"/>
+            </intent-filter>
+        </receiver>
         <activity
             android:name=".Favoritos"
             android:theme="@style/AppTheme.NoActionBar">
