@@ -70,7 +70,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void  initPage(String idPage){
-        if(idPage.equals(ActionKeys.ACTION_VIEW_PROFILE)){
+        if(idPage.equals(ActionKeys.ACTION_VIEW_PROFILE)){//ver la vista del perfil
+            viewPager.setCurrentItem(1);
+        }
+        if(idPage.equals(ActionKeys.ACTION_VIEWP_USER)){//ver la vista del usuario
             viewPager.setCurrentItem(1);
         }
     }
